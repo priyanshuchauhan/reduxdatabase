@@ -1,0 +1,11 @@
+{
+  "name": "reduxdatabase",
+  "version": "1.0.0",
+  "description": "Redux Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Priyanshu Chauhan",
+  "license": "ISC"
+}
