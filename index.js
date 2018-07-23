@@ -1,7 +1,6 @@
 var fs = require('fs');
-
 var http = require('http');
-var fs = require('fs');
+import { store } from './src/redux-init'
 
 http.createServer(function (req, res) {
   fs.readFile('src/demofile1.html', function(err, data) {
