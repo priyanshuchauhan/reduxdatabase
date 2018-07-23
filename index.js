@@ -1,6 +1,6 @@
 var fs = require('fs');
 var http = require('http');
-import { store } from './src/redux-init'
+import store from './src/redux-init';
 
 http.createServer(function (req, res) {
   fs.readFile('src/demofile1.html', function(err, data) {
@@ -9,3 +9,10 @@ http.createServer(function (req, res) {
     res.end();
   });
 }).listen(8080);
+
+store.dispatch({
+  type: 'INCREMENT'
+});
+store.dispatch({
+  type: 'DECREMENT'
+});

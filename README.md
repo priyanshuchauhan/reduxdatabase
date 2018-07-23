@@ -1,5 +1,5 @@
 
-# reduxdb [![]https://github.com/priyanshuchauhan/reduxdatabase)
+# reduxdb
 
 Redux with MongoDB-like API.
 
