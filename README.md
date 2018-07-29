@@ -14,6 +14,11 @@ On the other hand, a file system is a more unstructured data store for storing a
 The file system is more general, and databases are built on top of the general data storage services provided by file systems.
 
 
+## Trello Tasks
+
+https://trello.com/b/G1xuReeG/reduxdb
+
+
 ### Installation
 
 ```shell
