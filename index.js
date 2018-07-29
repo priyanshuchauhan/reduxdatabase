@@ -16,3 +16,7 @@ store.dispatch({
 store.dispatch({
   type: 'DECREMENT'
 });
+
+store.dispatch({
+  type: 'INCREMENT'
+});

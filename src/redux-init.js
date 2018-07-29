@@ -1,21 +1,23 @@
 import jsonfile from 'jsonfile';
 import { createStore } from 'redux';
+import throttle from 'lodash/throttle';
 
 const dbFile = './db.json';
 
 const persistState = (state) => {
-  const appendConfig = {flag: 'a', spaces: 2};
+  const appendConfig = {flag: 'a', spaces: 2}
   const readfileResp = jsonfile.readFile(dbFile, (err, obj) => {
     if (err) {
-      console.log('Error reading file');
+      console.error('Error reading file');
       return;
     }
     const isStateSame = JSON.stringify(obj) === JSON.stringify(state);
 
-    if (isStateSame) {
+    if (!isStateSame) {
       jsonfile.writeFile(dbFile, state, {spaces: 2}, err => {
         if (err) {
-            return console.log(err);
+          console.error('Error writing file');
+          return console.error(err);
         }
         console.log("The file was saved!");
       });
@@ -35,9 +37,10 @@ function counter(state = {count: 0}, action) {
 }
 
 let store = createStore(counter);
-store.subscribe(() => {
-  console.log(store.getState());
-  persistState(store.getState());
-})
+store.subscribe(throttle(() => {
+  const state = store.getState();
+  // console.log('subscribe', state);
+  persistState(state);
+}, 2000));
 
 export default store;

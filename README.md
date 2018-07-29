@@ -7,6 +7,13 @@ Notice that NOT all the features of MongoDB are implemented here, such as multi-
 
 The purpose of _reduxdb_ is to avoid writing almost the same actions and stores again and again in different projects.
 
+A database is generally used for storing related, structured data, with well defined data formats, in an efficient manner for
+insert, update and/or retrieval (depending on application).
+
+On the other hand, a file system is a more unstructured data store for storing arbitrary, probably unrelated data.
+The file system is more general, and databases are built on top of the general data storage services provided by file systems.
+
+
 ### Installation
 
 ```shell
