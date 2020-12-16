@@ -1,6 +1,7 @@
 import jsonfile from 'jsonfile';
 import { createStore } from 'redux';
 import throttle from 'lodash/throttle';
+import delay from 'lodash/delay';
 
 const dbFile = './db.json';
 
@@ -24,6 +25,24 @@ const persistState = (state) => {
     }
   })
 }
+
+let foo;
+
+const loadState = () => {
+  const readfileResp = jsonfile.readFile(dbFile, (err, obj) => {
+    if (err) {
+      console.error('Error reading file');
+      return;
+    }
+    console.log('##obj', obj);
+    // foo = {...obj};
+    foo = obj;
+    // const isStateSame = JSON.stringify(obj) === JSON.stringify(state);
+  })
+  return foo;
+}
+loadState()
+console.log('##loadState', foo);
 
 function counter(state = {count: 0}, action) {
   switch (action.type) {

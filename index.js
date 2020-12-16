@@ -1,6 +1,7 @@
 var fs = require('fs');
 var http = require('http');
-import store from './src/redux-init';
+// import store from './src/redux-init';
+import reduxPersist from './src/redux-persist';
 
 http.createServer(function (req, res) {
   fs.readFile('src/demofile1.html', function(err, data) {
@@ -10,6 +11,9 @@ http.createServer(function (req, res) {
   });
 }).listen(8080);
 
+const store = reduxPersist().store;
+const persistor = reduxPersist().persistor;
+
 store.dispatch({
   type: 'INCREMENT'
 });
@@ -17,6 +21,9 @@ store.dispatch({
   type: 'DECREMENT'
 });
 
+store.dispatch({
+  type: 'INCREMENT'
+});
 store.dispatch({
   type: 'INCREMENT'
 });
